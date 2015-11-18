@@ -1,10 +1,5 @@
 package com.coolweather.app.activity;
 
-import com.coolweather.app.R;
-import com.coolweather.app.util.HttpCallbackListener;
-import com.coolweather.app.util.HttpUtil;
-import com.coolweather.app.util.Utility;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,11 +7,17 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.coolweather.app.R;
+import com.coolweather.app.service.AutoUpdateService;
+import com.coolweather.app.util.HttpCallbackListener;
+import com.coolweather.app.util.HttpUtil;
+import com.coolweather.app.util.Utility;
 
 public class WeatherActivity extends Activity implements OnClickListener{
 	/**	天气布局	*/
@@ -166,7 +167,8 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
-		
+		Intent intent = new Intent(this, AutoUpdateService.class);
+		startService(intent);
 	}
 
 }
