@@ -89,7 +89,6 @@ public class WeatherActivity extends Activity implements OnClickListener{
 			if(!TextUtils.isEmpty(weatherCode)){
 				queryWeatherInfo(weatherCode);
 			}
-			
 			break;
 		default:
 			break;
