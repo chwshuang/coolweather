@@ -1,6 +1,7 @@
 package com.coolweather.app.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.coolweather.app.db.CoolWeatherDB;
 import com.coolweather.app.model.City;
@@ -17,6 +18,7 @@ public class Utility {
 	 */
 	public synchronized static boolean handleProvincesResponse(CoolWeatherDB coolWeatherDB, String responce){
 		if(!TextUtils.isEmpty(responce)){
+			Log.d("Utility", "请求省级数据完成，开始处理省级数据:" + responce);
 			String[] allProvinces = responce.split(",");
 			if(allProvinces != null && allProvinces.length > 0){
 				for(String p : allProvinces){
@@ -41,6 +43,7 @@ public class Utility {
 	 */
 	public synchronized static boolean handleCitiesResponse(CoolWeatherDB coolWeatherDB, String responce, int provinceId){
 		if(!TextUtils.isEmpty(responce)){
+			Log.d("Utility", "请求市级数据完成，开始处理市级数据:" + responce);
 			String[] allCities = responce.split(",");
 			if(allCities != null && allCities.length > 0){
 				for(String p : allCities){
@@ -67,6 +70,7 @@ public class Utility {
 	 */
 	public synchronized static boolean handleCountiesResponse(CoolWeatherDB coolWeatherDB, String responce, int cityId){
 		if(!TextUtils.isEmpty(responce)){
+			Log.d("Utility", "请求县级数据完成，开始处理县级数据:" + responce);
 			String[] allCounties = responce.split(",");
 			if(allCounties != null && allCounties.length > 0){
 				for(String p : allCounties){
